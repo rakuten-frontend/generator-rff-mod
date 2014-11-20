@@ -39,12 +39,12 @@
     "LICENSE"
   ],
   "dependencies": {
+    "generator-rff": "^0.5.0",
     "lodash": "^2.4.1",
     "yeoman-generator": "^0.17.1"
   },
   "peerDependencies": {
-    "yo": ">=1.0.0",
-    "generator-rff": "^0.5.0"
+    "yo": ">=1.0.0"
   },
   "devDependencies": {}
 }

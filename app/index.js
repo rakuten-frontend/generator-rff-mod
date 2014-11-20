@@ -12,19 +12,26 @@ var Generator = yeoman.generators.Base.extend({
     // jscs:enable requireDotNotation
   },
 
-  writing: {
-    baseFiles: function () {
-      var options = _.merge({}, this.options, {skipInstall: true});
-      var done = this.async();
-      this.invoke('rff', {
+  writing: function () {
+    var options = _.merge({}, this.options, {skipInstall: true});
+    this.composeWith('rff',
+      {
         options: options
-      }, done);
-    },
-
-    overrides: function () {
-      this.conflicter.force = true;
-      this.template('jshintrc', '.jshintrc');
-    }
+      },
+      {
+        local: require.resolve('generator-rff')
+      }
+    );
+    this.composeWith('rff-mod:overrides',
+      {
+        options: {
+          force: true
+        }
+      },
+      {
+        local: require.resolve('../overrides')
+      }
+    );
   },
 
   end: function () {
